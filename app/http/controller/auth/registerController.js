@@ -3,7 +3,10 @@ const controller=require('app/http/controller/controller');
 class registerController extends controller{
 
     showRegisterForm(req,res){
-        res.render('auth/register',{ messages :req.flash('errors')});
+        res.render('auth/register',{
+             messages :req.flash('errors'),
+             title:"ثبت نام"
+            });
     }
 
     registerProccess(req,res,next){
@@ -29,7 +32,6 @@ class registerController extends controller{
 
             if(errors.length==0)
                 return true;
-
             req.flash('errors',messages)
             return false;    
         }).catch(err=>console.log(err));

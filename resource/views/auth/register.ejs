@@ -1,14 +1,14 @@
 
 <%- include('../header'); %>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 <br> 
 
 
 
 
 
-<div class="card bg-light">
+<div class="card bg-light w-50 float-right mr-5">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center"> ثبت با </h4>
 	<p>
@@ -24,14 +24,14 @@
 	<form action="/register" method="POST" >
 	<div class="form-group input-group">
 
-        <input name="name" class="form-control" placeholder="نام کامل" type="text">
+        <input name="name" class="form-control rounded-0" placeholder="نام کامل" type="text">
         <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     
-        <input name="email" class="form-control" placeholder="ایمیل" type="email">
+        <input name="email" class="form-control rounded-0" placeholder="ایمیل" type="email">
         <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
              </div>
@@ -40,32 +40,34 @@
 
     <div class="form-group input-group">
     
-        <input name="password" class="form-control" placeholder="ساخت پسورد" type="password">
+        <input name="password" class="form-control rounded-0" placeholder="ساخت پسورد" type="password">
         <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
     </div> <!-- form-group// -->
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">   ثبت نام  </button>
+        <button type="submit" class="btn btn-success btn-block">   ثبت نام  </button>
     </div> <!-- form-group// -->      
-    <p class="text-center">اکانت دارید ؟<a href=""> ورود</a> </p>  
+    <p class="text-center">اکانت دارید ؟<a href="/login"> ورود</a> </p>  
 
 
-    <% if(messages.length > 0){ %> 
-        <div class="alert m-0">
-            <% messages.forEach(error=>{ %>
-                <div class="alert-danger alert p-1 mb-1 text-right">
-                    <%= error %>
-                </div>
-
-            <% }) %>
-        </div>
-
-        <% } %>                                                               
+                                                           
 </form>
 </article>
-</div> <!-- card.// -->
+</div> 
+<!-- card.// -->
+<% if(messages.length > 0){ %> 
+    <div class="alert m-0 float-right">
+        <% messages.forEach(error=>{ %>
+            <div class="alert-danger alert p-1 mb-1 text-right">
+                <%= error %>
+            </div>
+
+        <% }) %>
+    </div>
+
+    <% } %>    
 
 </div> 
 <!--container end.//-->
