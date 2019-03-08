@@ -1,19 +1,25 @@
 
 const controller=require('app/http/controller/controller');
 class registerController extends controller{
+    constructor(){
+        super();
+        var a="hello";
+    }
 
     showRegisterForm(req,res){
         res.render('auth/register',{
              messages :req.flash('errors'),
-             title:"ثبت نام"
+             title:"ثبت نام",
+             recaptcha:this.recaptcha.render()
             });
     }
 
     registerProccess(req,res,next){
-        this.validationData(req).then(result=>{
+        this.recaptchaValidation(req,res).then(result=> this.validationData(req))
+        .then(result=>{
             if(result) res.json('register proccess');
-            else res.redirect('/register');
-        })
+            else res.redirect('/register')
+        }).catch(err=> console.log(err));
     }
 
 
@@ -37,6 +43,14 @@ class registerController extends controller{
         }).catch(err=>console.log(err));
         
 
+    }
+    news(req,res){
+        res.json(this.a)
+  
+
+    }
+    news2(req,res){
+        res.json(this.a);
     }
 
 }

@@ -17,6 +17,13 @@ router.get('/login',loginController.showLoginForm);
 router.post('/login',loginController.loginProccess);
 
 
+
+
+
+router.get('/new',registerController.news);
+router.get('/new2',registerController.news2);
+
+
 //-----
 
 

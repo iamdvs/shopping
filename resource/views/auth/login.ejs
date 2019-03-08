@@ -3,11 +3,7 @@
 <div class="container mt-5">
         <br> 
         
-        
-        
-        
-        
-        <div class="card bg-light w-50 float-right mr-5">
+        <div class="card bg-light w-50 float-right mr-5 mb-5">
         <article class="card-body mx-auto" style="max-width: 400px;">
  
             <p class="divider-text">
@@ -36,13 +32,17 @@
         
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">ورود</button>
-            </div> <!-- form-group// -->      
-            <p class="text-center">اکانت ندارید ؟<a href="/register"> ثبت نام</a> </p>  
-        
-                                                         
+
+            </div> <!-- form-group// -->   
+            <%- recaptcha %>
+            
+            <p class="text-center mt-2">اکانت ندارید ؟<a href="/register"> ثبت نام</a> </p>  
+
+                                        
         </form>
         </article>
         </div> <!-- card.// -->
+
                 
         <% if(messages.length > 0){ %> 
             <div class="alert m-0 float-right">
@@ -53,8 +53,7 @@
     
                 <% }) %>
             </div>
-    
-            <% } %>      
+        <% } %>      
         
         </div> 
         <!--container end.//-->

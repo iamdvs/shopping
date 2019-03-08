@@ -4,21 +4,25 @@ const controller=require('app/http/controller/controller');
 class loginController extends controller{
 
     showLoginForm(req,res){
+
         res.render('auth/login',{
             messages:req.flash('errors'),
-            title:"ورود"
+            title:"ورود",
+            recaptcha:this.recaptcha.render()
         })
 
     }
 
     loginProccess(req,res,next){
-        this.validationData(req).then(result=>{
+        this.recaptchaValidation(req,res).then(result=> this.validationData(req))
+        .then(result=>{
             if(result) res.json('login proccess');
             else res.redirect('/login');
-        })
+        }).catch(err=>console.log(err));
+
     }
 
-    validationData(req,res){
+    validationData(req){
         req.checkBody('email','ایمیل خالی میباشد').notEmpty();
         req.checkBody('email','فرمت ایمیل صحیح نیست').isEmail();
         req.checkBody('password','پسورد خالی میباشد').notEmpty();
