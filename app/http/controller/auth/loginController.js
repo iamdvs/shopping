@@ -1,5 +1,6 @@
 const controller=require('app/http/controller/controller');
 
+
 class loginController extends controller{
 
     showLoginForm(req,res){
@@ -9,7 +10,7 @@ class loginController extends controller{
         })
 
     }
-    
+
     loginProccess(req,res,next){
         this.validationData(req).then(result=>{
             if(result) res.json('login proccess');
