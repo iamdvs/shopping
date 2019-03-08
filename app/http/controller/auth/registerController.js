@@ -1,10 +1,7 @@
 
 const controller=require('app/http/controller/controller');
 class registerController extends controller{
-    constructor(){
-        super();
-        var a="hello";
-    }
+
 
     showRegisterForm(req,res){
         res.render('auth/register',{
@@ -43,14 +40,6 @@ class registerController extends controller{
         }).catch(err=>console.log(err));
         
 
-    }
-    news(req,res){
-        res.json(this.a)
-  
-
-    }
-    news2(req,res){
-        res.json(this.a);
     }
 
 }
