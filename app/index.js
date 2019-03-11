@@ -8,7 +8,8 @@ flash=require('connect-flash'),
 MongoStore=require('connect-mongo')(session),
 mongoose=require('mongoose'),
 cookieParser=require('cookie-parser'),
-path=require('path');
+path=require('path'),
+passport=require('passport');
 
 
 module.exports=class Application{
@@ -23,7 +24,7 @@ module.exports=class Application{
     setMongoConnection(){
 
         mongoose.Promise=global.Promise;
-        mongoose.connect('mongodb://localhost/pro1');
+        mongoose.connect('mongodb://localhost/pro1', { useNewUrlParser: true });
 
     }
     setupServer(){
@@ -32,7 +33,7 @@ module.exports=class Application{
 
     }
     setConfig(){
-
+        require('app/passport/passport-local');
         app.use(express.static('public'));
         app.set('views',path.resolve('./resource/views'));
         app.set('view engine','ejs');
@@ -47,6 +48,8 @@ module.exports=class Application{
         app.use(validator());
         app.use(cookieParser('pro1'));
         app.use(flash());
+        app.use(passport.initialize());
+        app.use(passport.session());
 
     }
     setRouters(){

@@ -11,7 +11,7 @@ const loginController=require('app/http/controller/auth/loginController');
 //-----
 
 router.get('/',homeController.index);
-router.get('/register',registerController.showRegisterForm);
+router.get('/register',registerController.showRegsitrationForm);
 router.post('/register',registerController.registerProccess);
 router.get('/login',loginController.showLoginForm);
 router.post('/login',loginController.loginProccess);
@@ -19,7 +19,6 @@ router.post('/login',loginController.loginProccess);
 
 
 
-//-----
 
 
 

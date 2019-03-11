@@ -7,7 +7,6 @@ class loginController extends controller{
 
         res.render('auth/login',{
             messages:req.flash('errors'),
-            title:"ورود",
             recaptcha:this.recaptcha.render()
         })
 
